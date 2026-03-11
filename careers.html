@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Careers — Concord Summit Capital</title>
+<meta name="description" content="Concord Summit Capital — National commercial real estate capital markets advisory.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.car-hero{position:relative;min-height:72vh;display:flex;align-items:center;padding:calc(var(--nav-h)+64px) 0 80px;margin-top:var(--nav-h)}
+.car-hero-bg{position:absolute;inset:0;background:linear-gradient(155deg,rgba(7,11,16,.9) 0%,rgba(7,11,16,.52) 100%),url('https://images.unsplash.com/photo-1575515580590-91f78ea19e3d?w=1920&q=85') center/cover no-repeat}
+.car-h1{font-family:var(--font-head);font-size:clamp(40px,8vw,80px);font-weight:800;color:var(--ivory);letter-spacing:-.03em;line-height:1.04;margin-bottom:18px}
+.car-h1 em{font-style:normal;color:var(--powder)}
+.why-join{padding:88px 0;background:var(--pale)}
+.vg{display:grid;grid-template-columns:1fr;gap:10px;margin-top:44px}
+.vc{background:#fff;border:1px solid rgba(36,49,68,.15);border-radius:var(--r);padding:26px 22px;transition:box-shadow var(--t),transform var(--t)}
+.vc:hover{box-shadow:0 4px 20px rgba(27,79,214,.1);transform:translateY(-2px)}
+.vi{font-size:22px;color:var(--royal);margin-bottom:12px;display:block}
+.vt{font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--pale-ink);margin-bottom:6px}
+.vd{font-size:15px;color:var(--pale-char);line-height:1.65}
+.comp-sec{padding:88px 0;background:var(--ink)}
+.cg{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border);border-radius:var(--r);overflow:hidden;margin-top:44px}
+.cc{background:var(--slate);padding:30px 26px;transition:background var(--t);position:relative}
+.cc:hover{background:#132032}
+.cc-num{font-family:var(--font-head);font-size:60px;font-weight:800;color:rgba(243,246,250,.04);line-height:1;letter-spacing:-.04em}
+.cc-title{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--ivory);margin-bottom:8px}
+.cc-desc{font-size:15px;color:var(--mist);line-height:1.7}
+.culture-sec{padding:88px 0;background:var(--slate);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cult-inner{display:flex;flex-direction:column;gap:40px}
+.cult-q{font-family:var(--font-head);font-size:clamp(20px,4vw,30px);font-weight:700;color:var(--ivory);line-height:1.25;letter-spacing:-.02em;border-left:3px solid var(--gold);padding-left:24px}
+.cult-p{font-size:17px;color:var(--mist);line-height:1.78;margin-bottom:14px}
+.cult-pills{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:var(--r-sm);overflow:hidden;margin-top:22px}
+.pill{background:var(--ink);padding:13px 16px}
+.pill-l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);opacity:.45;margin-bottom:2px}
+.pill-v{font-size:14px;font-weight:700;color:var(--ivory)}
+.ben-sec{padding:88px 0;background:var(--pale)}
+.ben-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(36,49,68,.18);border-radius:var(--r);overflow:hidden;margin-top:44px}
+.ben{background:var(--pale-card);padding:18px 16px;transition:background var(--t)}
+.ben:hover{background:#fff}
+.ben i{font-size:18px;color:var(--royal);display:block;margin-bottom:7px}
+.ben-t{font-size:13px;font-weight:600;color:var(--pale-ink);line-height:1.4}
+@media(min-width:640px){.vg{grid-template-columns:repeat(2,1fr)}.cg{grid-template-columns:repeat(3,1fr)}.ben-grid{grid-template-columns:repeat(3,1fr)}.cult-inner{flex-direction:row;align-items:center;gap:64px}.cult-inner>*{flex:1}}
+@media(min-width:1024px){.vg{grid-template-columns:repeat(3,1fr)}.ben-grid{grid-template-columns:repeat(4,1fr)}.why-join,.comp-sec,.culture-sec,.ben-sec{padding:112px 0}}
+@media(max-width:639px){.car-h1{font-size:clamp(36px,10vw,60px)}}
+</style>
+</head>
+<body><nav id="main-nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Concord Summit Capital"></a>
+  <div class="nav-links"><a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="services.html">Services</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="careers.html" class="active">Careers</a>
+    <a href="contact.html">Contact</a></div>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html" onclick="closeMenu()">About</a>
+  <a href="team.html" onclick="closeMenu()">Team</a>
+  <a href="services.html" onclick="closeMenu()">Services</a>
+  <a href="transactions.html" onclick="closeMenu()">Transactions</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a href="contact.html" class="mobile-cta" onclick="closeMenu()">Get in Touch &rarr;</a>
+</div>
+<section class="car-hero">
+  <div class="car-hero-bg"></div>
+  <div class="section-inner" style="position:relative;z-index:2">
+    <div class="eyebrow"><span class="eyebrow-text">Careers at Concord Summit</span></div>
+    <h1 class="car-h1">Your Track Record.<br>Your Platform.<br><em>Your Terms.</em></h1>
+    <p class="section-subtitle" style="margin-top:0;margin-bottom:32px;max-width:500px">Built for producers. Built for performance. Built for serious capital markets professionals.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="contact.html" class="btn-primary">View Open Roles &rarr;</a>
+      <a href="contact.html" class="btn-secondary">Connect With Us</a>
+    </div>
+  </div>
+</section>
+<section class="why-join">
+  <div class="section-inner">
+    <div class="eyebrow"><span class="eyebrow-text pale">Why Concord Summit</span></div>
+    <h2 class="section-title on-pale">Why Join Us?</h2>
+    <p class="section-subtitle on-pale">Direct autonomy. Institutional infrastructure. Competitive economics.</p>
+    <div class="vg">
+      <div class="vc"><i class="vi ti ti-building-skyscraper"></i><div class="vt">Producer-Led Platform</div><div class="vd">Direct autonomy. No bureaucracy. Run your business at institutional scale.</div></div>
+      <div class="vc"><i class="vi ti ti-rocket"></i><div class="vt">Execution Infrastructure</div><div class="vd">Dedicated analysts. Institutional-grade underwriting. Integrated marketing support.</div></div>
+      <div class="vc"><i class="vi ti ti-chart-bar"></i><div class="vt">Institutional Capital Access</div><div class="vd">Longstanding capital relationships — accessible from day one.</div></div>
+      <div class="vc"><i class="vi ti ti-coin"></i><div class="vt">Aligned Economics</div><div class="vd">Competitive splits. Profit participation. Equity incentives structured for long-term growth.</div></div>
+      <div class="vc"><i class="vi ti ti-map-2"></i><div class="vt">National Growth Platform</div><div class="vd">Expand into top-performing growth markets without geographic constraint.</div></div>
+      <div class="vc"><i class="vi ti ti-briefcase"></i><div class="vt">Serious Transactions</div><div class="vd">Structured debt and equity at the highest levels of the capital markets landscape.</div></div>
+    </div>
+    <div class="section-cta-row"><a href="contact.html" class="btn-primary">View Open Roles &rarr;</a></div>
+  </div>
+</section>
+<section class="comp-sec">
+  <div class="section-inner">
+    <div class="eyebrow"><span class="eyebrow-text">Compensation</span></div>
+    <h2 class="section-title">Performance-Driven Economics</h2>
+    <div class="cg">
+      <div class="cc"><div class="cc-num">01</div><div class="cc-title">Draw + Commission Splits</div><div class="cc-desc">A combination of draw and commission splits tailored to each producer&rsquo;s business plan and market.</div></div>
+      <div class="cc"><div class="cc-num">02</div><div class="cc-title">Override Structures</div><div class="cc-desc">Overrides on team production for senior producers building regional business units.</div></div>
+      <div class="cc"><div class="cc-num">03</div><div class="cc-title">Profit &amp; Equity Participation</div><div class="cc-desc">Senior roles include profit participation or equity incentives aligned with long-term contribution.</div></div>
+    </div>
+  </div>
+</section>
+<section class="culture-sec">
+  <div class="section-inner">
+    <div class="cult-inner">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-text">Culture</span></div>
+        <div class="cult-q">&ldquo;Work smart, not harder &mdash; but work hard.&rdquo;</div>
+      </div>
+      <div>
+        <p class="cult-p">We value tenacity, efficiency, and an unrelenting commitment to getting deals done. If you have the desire to build wealth and work at the intersection of capital and real estate &mdash; this is your platform.</p>
+        <p class="cult-p">We don&rsquo;t manage producers. We back them.</p>
+        <div class="cult-pills">
+          <div class="pill"><div class="pill-l">Value</div><div class="pill-v">Tenacity</div></div>
+          <div class="pill"><div class="pill-l">Value</div><div class="pill-v">Efficiency</div></div>
+          <div class="pill"><div class="pill-l">Value</div><div class="pill-v">Execution</div></div>
+          <div class="pill"><div class="pill-l">Value</div><div class="pill-v">Accountability</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="ben-sec">
+  <div class="section-inner">
+    <div class="eyebrow"><span class="eyebrow-text pale">Benefits</span></div>
+    <h2 class="section-title on-pale">Comprehensive Benefits</h2>
+    <div class="ben-grid">
+      <div class="ben"><i class="ti ti-activity"></i><div class="ben-t">Comprehensive Group Medical Coverage</div></div>
+      <div class="ben"><i class="ti ti-device-laptop"></i><div class="ben-t">Telehealth Services</div></div>
+      <div class="ben"><i class="ti ti-shield"></i><div class="ben-t">Group Term Life Insurance</div></div>
+      <div class="ben"><i class="ti ti-shield-check"></i><div class="ben-t">Voluntary Life &amp; AD&amp;D Insurance</div></div>
+      <div class="ben"><i class="ti ti-urgent"></i><div class="ben-t">Accident Insurance</div></div>
+      <div class="ben"><i class="ti ti-heartbeat"></i><div class="ben-t">Critical Illness Insurance</div></div>
+      <div class="ben"><i class="ti ti-accessibility"></i><div class="ben-t">Short-Term &amp; Long-Term Disability</div></div>
+      <div class="ben"><i class="ti ti-credit-card"></i><div class="ben-t">Flexible Spending Account (FSA)</div></div>
+      <div class="ben"><i class="ti ti-piggy-bank"></i><div class="ben-t">Health Savings Account (HSA)</div></div>
+      <div class="ben"><i class="ti ti-cash"></i><div class="ben-t">401(k) Retirement Plan</div></div>
+      <div class="ben"><i class="ti ti-scale"></i><div class="ben-t">LegalShield Legal Services</div></div>
+      <div class="ben"><i class="ti ti-calendar-off"></i><div class="ben-t">Unlimited Paid Time Off</div></div>
+      <div class="ben"><i class="ti ti-receipt"></i><div class="ben-t">Business Expense Support</div></div>
+    </div>
+    <div class="section-cta-row"><a href="contact.html" class="btn-primary">View Open Roles &rarr;</a></div>
+  </div>
+</section>
+
+<section class="contact-strip">
+  <div class="section-inner">
+    <div class="contact-strip-inner">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-text">Contact</span></div>
+        <h2 class="section-title" style="font-size:clamp(26px,4vw,36px)">Let&rsquo;s Talk.</h2>
+        <p class="section-subtitle" style="margin-top:12px">Financing inquiries, capital introductions, career conversations.</p>
+        <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="contact.html" class="btn-primary">Get in Touch &rarr;</a>
+          <a href="mailto:info@concordsummit.com" class="btn-secondary">info@concordsummit.com</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="contact-office"><h4>Miami &mdash; HQ</h4><p>+1 305 417 6557</p><a href="mailto:info@concordsummit.com">info@concordsummit.com</a></div>
+        <div class="contact-office"><h4>New York</h4><p>New York, NY</p></div>
+        <div class="contact-office"><h4>Dallas / Fort Worth</h4><p>Dallas, TX</p></div>
+        <div class="contact-office"><h4>Denver</h4><p>Denver, CO</p></div>
+        <div class="contact-office"><h4>Los Angeles</h4><p>Los Angeles, CA</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><a href="index.html"><img src="images/logo.png" alt="Concord Summit Capital"></a></div>
+        <p>One of the leading intermediaries between sponsors and providers of capital for commercial real estate debt and equity financing.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col"><h5>Platform</h5>
+          <a href="services.html#debt">Debt Financing</a>
+          <a href="services.html#mezzanine">Mezzanine &amp; Preferred</a>
+          <a href="services.html#equity">Equity Financing</a>
+          <a href="services.html#engagement">Engagement Services</a>
+        </div>
+        <div class="footer-col"><h5>Company</h5>
+          <a href="about.html">About</a><a href="team.html">Team</a>
+          <a href="transactions.html">Transactions</a><a href="careers.html">Careers</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col"><h5>Offices</h5>
+          <a href="team.html#miami">Miami</a><a href="team.html#new-york">New York</a>
+          <a href="team.html#dallas">Dallas / Fort Worth</a>
+          <a href="team.html#denver">Denver</a><a href="team.html#los-angeles">Los Angeles</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Concord Summit Capital. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

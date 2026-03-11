@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Transactions — Concord Summit Capital</title>
+<meta name="description" content="Concord Summit Capital — National commercial real estate capital markets advisory.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.tx-body{padding:88px 0;background:var(--ink)}
+.txg{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:var(--r);overflow:hidden}
+.tx-row{background:var(--slate);padding:22px 26px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;transition:background var(--t)}
+.tx-row:hover{background:#132032}
+.tx-amount{font-family:var(--font-head);font-size:clamp(24px,3vw,34px);font-weight:800;color:var(--ivory);letter-spacing:-.025em;font-variant-numeric:tabular-nums;flex-shrink:0;min-width:118px}
+.tx-info{flex:1;min-width:160px}
+.tx-name{font-size:16px;font-weight:600;color:var(--ivory)}
+.tx-detail{font-size:13px;color:var(--mist);margin-top:3px;line-height:1.5}
+.tx-tag{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);border-left:2px solid var(--purple);padding:2px 0 2px 8px;white-space:nowrap;align-self:flex-start}
+@media(min-width:640px){.txg{display:grid;grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.txg{grid-template-columns:repeat(3,1fr)}.tx-body{padding:112px 0}}
+</style>
+</head>
+<body><nav id="main-nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Concord Summit Capital"></a>
+  <div class="nav-links"><a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="services.html">Services</a>
+    <a href="transactions.html" class="active">Transactions</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a></div>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html" onclick="closeMenu()">About</a>
+  <a href="team.html" onclick="closeMenu()">Team</a>
+  <a href="services.html" onclick="closeMenu()">Services</a>
+  <a href="transactions.html" onclick="closeMenu()">Transactions</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a href="contact.html" class="mobile-cta" onclick="closeMenu()">Get in Touch &rarr;</a>
+</div>
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1920&q=85')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content section-inner">
+    <div class="eyebrow"><span class="eyebrow-text">Track Record</span></div>
+    <h1 class="section-title" style="font-family:var(--font-head);font-size:clamp(36px,7vw,68px);font-weight:800;letter-spacing:-.03em">Selected Financings</h1>
+    <div class="page-hero-rule"></div>
+    
+  </div>
+</section><section class="tx-body"><div class="section-inner"><div class="txg"><div class="tx-row"><div class="tx-amount">$300M</div><div class="tx-info"><div class="tx-name">Paramount Miami World Center</div><div class="tx-detail">Non-Recourse Construction Loan &amp; Mezzanine &mdash; Miami, FL</div></div><div class="tx-tag">Mixed-Use</div></div><div class="tx-row"><div class="tx-amount">$269M</div><div class="tx-info"><div class="tx-name">Nautilus 220</div><div class="tx-detail">Construction Loan &mdash; 330 Luxury Condominiums &mdash; West Palm Beach, FL</div></div><div class="tx-tag">Residential</div></div><div class="tx-row"><div class="tx-amount">$232.5M</div><div class="tx-info"><div class="tx-name">Kindred Resort at Keystone</div><div class="tx-detail">Construction, CPACE, Preferred &amp; GP Equity &mdash; Keystone, CO</div></div><div class="tx-tag">Hospitality</div></div><div class="tx-row"><div class="tx-amount">$167M</div><div class="tx-info"><div class="tx-name">Muse Sunny Isles</div><div class="tx-detail">Construction Loan &mdash; Luxury Condominiums &mdash; Sunny Isles, FL</div></div><div class="tx-tag">Residential</div></div><div class="tx-row"><div class="tx-amount">$159M</div><div class="tx-info"><div class="tx-name">Park Grove</div><div class="tx-detail">Participation on Senior Construction Loan &mdash; Miami, FL</div></div><div class="tx-tag">Mixed-Use</div></div><div class="tx-row"><div class="tx-amount">$130M</div><div class="tx-info"><div class="tx-name">Elysee</div><div class="tx-detail">Non-Recourse Construction + $35M Acquisition &mdash; Miami, FL</div></div><div class="tx-tag">Residential</div></div><div class="tx-row"><div class="tx-amount">$113M</div><div class="tx-info"><div class="tx-name">Plantation Walk Apartments</div><div class="tx-detail">Non-Recourse Construction Loan &amp; Mezzanine &mdash; Plantation, FL</div></div><div class="tx-tag">Multifamily</div></div><div class="tx-row"><div class="tx-amount">$110M</div><div class="tx-info"><div class="tx-name">X Miami</div><div class="tx-detail">Non-Recourse Construction Loan &amp; Mezzanine &mdash; Miami, FL</div></div><div class="tx-tag">Multifamily</div></div><div class="tx-row"><div class="tx-amount">$81.7M</div><div class="tx-info"><div class="tx-name">Yacht Haven Park and Marina</div><div class="tx-detail">Acquisition Bridge Loan &mdash; Fort Lauderdale, FL</div></div><div class="tx-tag">Hospitality</div></div></div></div></section>
+<section class="contact-strip">
+  <div class="section-inner">
+    <div class="contact-strip-inner">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-text">Contact</span></div>
+        <h2 class="section-title" style="font-size:clamp(26px,4vw,36px)">Let&rsquo;s Talk.</h2>
+        <p class="section-subtitle" style="margin-top:12px">Financing inquiries, capital introductions, career conversations.</p>
+        <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="contact.html" class="btn-primary">Get in Touch &rarr;</a>
+          <a href="mailto:info@concordsummit.com" class="btn-secondary">info@concordsummit.com</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="contact-office"><h4>Miami &mdash; HQ</h4><p>+1 305 417 6557</p><a href="mailto:info@concordsummit.com">info@concordsummit.com</a></div>
+        <div class="contact-office"><h4>New York</h4><p>New York, NY</p></div>
+        <div class="contact-office"><h4>Dallas / Fort Worth</h4><p>Dallas, TX</p></div>
+        <div class="contact-office"><h4>Denver</h4><p>Denver, CO</p></div>
+        <div class="contact-office"><h4>Los Angeles</h4><p>Los Angeles, CA</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><a href="index.html"><img src="images/logo.png" alt="Concord Summit Capital"></a></div>
+        <p>One of the leading intermediaries between sponsors and providers of capital for commercial real estate debt and equity financing.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col"><h5>Platform</h5>
+          <a href="services.html#debt">Debt Financing</a>
+          <a href="services.html#mezzanine">Mezzanine &amp; Preferred</a>
+          <a href="services.html#equity">Equity Financing</a>
+          <a href="services.html#engagement">Engagement Services</a>
+        </div>
+        <div class="footer-col"><h5>Company</h5>
+          <a href="about.html">About</a><a href="team.html">Team</a>
+          <a href="transactions.html">Transactions</a><a href="careers.html">Careers</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col"><h5>Offices</h5>
+          <a href="team.html#miami">Miami</a><a href="team.html#new-york">New York</a>
+          <a href="team.html#dallas">Dallas / Fort Worth</a>
+          <a href="team.html#denver">Denver</a><a href="team.html#los-angeles">Los Angeles</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Concord Summit Capital. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

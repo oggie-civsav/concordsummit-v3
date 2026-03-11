@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Team — Concord Summit Capital</title>
+<meta name="description" content="Meet the Concord Summit Capital team — national leaders in commercial real estate capital markets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+
+/* ── SECTION NAV ──────────────────────────────────────── */
+.section-nav {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 200;
+  background: var(--slate);
+  border-bottom: 1px solid var(--border);
+}
+.section-nav-inner {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 var(--px);
+  gap: 0;
+}
+.section-nav-inner::-webkit-scrollbar { display: none; }
+.section-nav a {
+  flex-shrink: 0;
+  padding: 14px 18px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--mist);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color var(--t), border-color var(--t);
+  display: block;
+}
+.section-nav a:hover { color: var(--ivory); }
+.section-nav a.active {
+  color: var(--ivory);
+  border-bottom-color: var(--royal);
+}
+
+/* ── TEAM PAGE ────────────────────────────────────────── */
+.team-page {
+  background: var(--ink);
+  padding-bottom: 96px;
+}
+
+/* ── OFFICE BLOCK ─────────────────────────────────────── */
+.office-block {
+  padding-top: 72px;
+  scroll-margin-top: calc(var(--nav-h) + 48px);
+}
+.office-block + .office-block {
+  padding-top: 64px;
+  border-top: 1px solid var(--border);
+  margin-top: 64px;
+}
+
+.office-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 14px;
+  margin-bottom: 32px;
+}
+.office-name {
+  font-family: var(--font-head);
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700;
+  color: var(--ivory);
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.office-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(216,178,92,.3);
+  padding: 3px 9px;
+  border-radius: 4px;
+  align-self: center;
+}
+.office-count {
+  font-size: 12px;
+  color: var(--mist);
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── TEAM GRID ────────────────────────────────────────── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.team-grid.small { max-width: 640px; }
+
+/* ── TEAM CARD ────────────────────────────────────────── */
+.team-card {
+  background: var(--slate);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: background var(--t), border-color var(--t), transform var(--t);
+  cursor: default;
+  position: relative;
+}
+.team-card[data-bio] {
+  cursor: pointer;
+}
+.team-card[data-bio]:hover {
+  background: #132032;
+  border-color: #2f4260;
+  transform: translateY(-2px);
+}
+.team-card:focus-visible {
+  outline: 2px solid var(--royal);
+  outline-offset: -2px;
+}
+
+/* Photo */
+.card-photo {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #0e1a28;
+  position: relative;
+  flex-shrink: 0;
+}
+.card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform .55s ease;
+  filter: grayscale(8%);
+}
+.team-card[data-bio]:hover .card-photo img {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+}
+
+/* Bio nudge overlay */
+.card-nudge {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px 14px 13px;
+  background: linear-gradient(to top, rgba(7,11,16,.82) 0%, transparent 100%);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(195,206,220,.7);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity var(--t);
+  pointer-events: none;
+}
+.team-card[data-bio]:hover .card-nudge { opacity: 1; }
+@media (hover: none) {
+  .team-card[data-bio] .card-nudge { opacity: 1; }
+}
+
+/* Body */
+.card-body {
+  padding: 14px 16px 16px;
+  border-top: 1px solid var(--border);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-name {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ivory);
+  letter-spacing: -.01em;
+  line-height: 1.2;
+}
+.card-title {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--mist);
+  opacity: .7;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* Footer (bio btn + linkedin) */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  margin-top: auto;
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.card-bio-btn {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--royal);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--t);
+  min-height: 32px;
+}
+.card-bio-btn:hover { color: var(--powder); }
+.card-li {
+  width: 28px; height: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--mist);
+  font-size: 14px;
+  text-decoration: none;
+  transition: background var(--t), border-color var(--t), color var(--t);
+  flex-shrink: 0;
+}
+.card-li:hover { background: #0077b5; border-color: #0077b5; color: #fff; }
+
+.team-card.no-bio .card-footer { display: none; }
+.team-card.no-bio .card-body { padding-bottom: 18px; }
+
+/* ── CO-FOUNDERS: 3-up on desktop ─────────────────────── */
+@media (min-width: 1024px) {
+  #co-founders .team-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── BIO MODAL ────────────────────────────────────────── */
+.bio-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(7,11,16,.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .28s ease, visibility 0s .28s;
+}
+.bio-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .28s ease;
+}
+
+/* Bottom sheet (mobile) */
+.bio-panel {
+  position: absolute;
+  background: var(--slate);
+  border: 1px solid var(--border);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+
+  bottom: 0; left: 0; right: 0;
+  max-height: 90dvh;
+  border-top-left-radius: var(--r);
+  border-top-right-radius: var(--r);
+  border-bottom: none;
+  transform: translateY(102%);
+  transition: transform .32s cubic-bezier(.22,.61,.36,1);
+}
+.bio-backdrop.open .bio-panel { transform: translateY(0); }
+
+/* Side drawer (desktop) */
+@media (min-width: 768px) {
+  .bio-panel {
+    top: 0; bottom: 0; right: 0; left: auto;
+    width: min(500px, 90vw);
+    max-height: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-left: 1px solid var(--border);
+    border-top: none;
+    transform: translateX(102%);
+  }
+  .bio-backdrop.open .bio-panel { transform: translateX(0); }
+}
+
+/* Drag handle */
+.bio-handle {
+  width: 36px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 14px auto 0;
+}
+@media (min-width: 768px) { .bio-handle { display: none; } }
+
+/* Close button */
+.bio-close-row {
+  position: sticky;
+  top: 0;
+  padding: 14px 16px 0;
+  display: flex;
+  justify-content: flex-end;
+  background: var(--slate);
+  z-index: 10;
+}
+.bio-close-btn {
+  width: 34px; height: 34px;
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--mist);
+  font-size: 17px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--t), color var(--t);
+}
+.bio-close-btn:hover { background: var(--border); color: var(--ivory); }
+
+@media (min-width: 768px) {
+  .bio-close-row { padding: 20px 20px 0; }
+}
+
+/* Modal content */
+.bio-content { padding: 16px 20px 56px; }
+@media (min-width: 768px) { .bio-content { padding: 8px 36px 64px; } }
+
+/* Header: photo + meta */
+.bio-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.bio-photo {
+  width: 80px; height: 80px;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  display: block;
+}
+@media (min-width: 768px) { .bio-photo { width: 100px; height: 100px; } }
+
+.bio-meta { flex: 1; min-width: 0; }
+.bio-name {
+  font-family: var(--font-head);
+  font-size: clamp(18px, 3.5vw, 24px);
+  font-weight: 800;
+  color: var(--ivory);
+  letter-spacing: -.02em;
+  line-height: 1.15;
+}
+.bio-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-top: 5px;
+}
+.bio-office {
+  font-size: 13px;
+  color: var(--mist);
+  opacity: .65;
+  margin-top: 4px;
+}
+/* Thin gold rule */
+.bio-gold-rule {
+  width: 28px; height: 2px;
+  background: var(--gold);
+  margin-top: 10px;
+}
+.bio-li-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--royal);
+  text-decoration: none;
+  transition: color var(--t);
+}
+.bio-li-link:hover { color: var(--powder); }
+.bio-li-link i { font-size: 16px; }
+
+/* Bio text */
+.bio-text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--mist);
+  line-height: 1.78;
+}
+.bio-text p { margin-bottom: 14px; }
+.bio-text p:last-child { margin-bottom: 0; }
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media (min-width: 640px) {
+  .card-name  { font-size: 16px; }
+  .card-body  { padding: 16px 18px 18px; }
+}
+@media (min-width: 1024px) {
+  .team-grid  { grid-template-columns: repeat(4, 1fr); }
+  .team-grid.small { grid-template-columns: repeat(2, 1fr); }
+  .card-name  { font-size: 17px; }
+  .card-body  { padding: 18px 20px 20px; }
+}
+
+/* ── MOBILE ───────────────────────────────────────────── */
+@media (max-width: 639px) {
+  :root { --px: 16px; --nav-h: 58px; }
+  .nav-logo img { height: 26px; }
+  .section-nav a { padding: 12px 14px; font-size: 11px; }
+  .office-block { padding-top: 48px; }
+  .office-block + .office-block { padding-top: 40px; margin-top: 40px; }
+  .office-name { font-size: 20px; }
+  .team-grid { gap: 6px; }
+  .card-name  { font-size: 13px; }
+  .card-title { font-size: 9px; }
+  .card-body  { padding: 11px 12px 13px; }
+  .card-footer { padding-top: 9px; margin-top: 9px; }
+  .card-bio-btn { font-size: 10px; }
+  .card-li { width: 26px; height: 26px; font-size: 13px; }
+  .team-page { padding-bottom: 64px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Concord Summit Capital"></a>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="team.html" class="active">Team</a>
+    <a href="services.html">Services</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html"        onclick="closeMenu()">About</a>
+  <a href="team.html"         onclick="closeMenu()">Team</a>
+  <a href="services.html"     onclick="closeMenu()">Services</a>
+  <a href="transactions.html" onclick="closeMenu()">Transactions</a>
+  <a href="careers.html"      onclick="closeMenu()">Careers</a>
+  <a href="contact.html"      onclick="closeMenu()">Contact</a>
+  <a href="contact.html" class="mobile-cta" onclick="closeMenu()">Get in Touch &rarr;</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=85')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content section-inner">
+    <div class="eyebrow"><span class="eyebrow-text">Our People</span></div>
+    <h1 class="section-title" style="font-family:var(--font-head);font-size:clamp(36px,7vw,68px);font-weight:800;letter-spacing:-.03em">The Team</h1>
+    <div class="page-hero-rule"></div>
+    <p class="section-subtitle" style="margin-top:10px;max-width:520px">The leaders guiding Concord Summit Capital&rsquo;s national platform.</p>
+  </div>
+</section>
+
+<!-- SECTION NAV -->
+<nav class="section-nav" id="section-nav" aria-label="Jump to office">
+  <div class="section-nav-inner">
+    <a href="#co-founders" class="active">Co-Founders</a>
+    <a href="#miami">Miami</a>
+    <a href="#new-york">New York</a>
+    <a href="#dallas">Dallas / Fort Worth</a>
+    <a href="#denver">Denver</a>
+    <a href="#los-angeles">Los Angeles</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="team-page">
+<div class="section-inner">
+
+<!-- ── CO-FOUNDERS ────────────────────────────────────── -->
+<div class="office-block" id="co-founders">
+  <div class="office-header">
+    <span class="office-name">Co-Founders</span>
+  </div>
+  <div class="team-grid">
+
+    <div class="team-card" tabindex="0" role="button" aria-label="View bio for Kevin O'Grady"
+         data-bio="true"
+         data-photo="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/52086d4f-a2a7-47b2-bebe-a18ad84d4703/080421Kevin_OGrady024.jpg"
+         data-name="Kevin O&rsquo;Grady"
+         data-title="Chairman, Co-CIO &amp; Partner"
+         data-office="Miami &mdash; Headquarters"
+         data-biotext="With over 40 years of commercial real estate finance and related industry experience, Kevin O'Grady provides solutions for commercial real estate transactions of all types of asset classes, including office, retail, multi-family, for-sale residential condominiums, hospitality, industrial and mixed-use developments both urban and suburban.
+
+In his combined experience, O'Grady has been responsible for the development of over 10 million square feet of commercial projects, 23 master planned housing communities, 6 million square feet of commercial leasing and over $25 billion in structured finance closings.
+
+Prior to founding Concord Summit, O'Grady was SVP and Managing Director with Walker and Dunlop. He also served as a founding member of the National Equity Practice Group of Cohen Financial, a partnership with Guggenheim, a Director at LJ Melody and was a senior officer at various recognized development companies, including Atlantic Gulf Communities, HF Ahmanson, Robert Trent Jones Development, Turner Development, and CSX Development.
+
+He has three children and two grandchildren and attended the University of Maryland, graduating with a Bachelor of Arts degree.">
+      <div class="card-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/52086d4f-a2a7-47b2-bebe-a18ad84d4703/080421Kevin_OGrady024.jpg" alt="Kevin O'Grady" loading="lazy">
+        <span class="card-nudge"><i class="ti ti-user"></i> See Bio</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Kevin O&rsquo;Grady</div>
+        <div class="card-title">Chairman, Co-CIO &amp; Partner</div>
+        <div class="card-footer">
+          <button class="card-bio-btn">See Bio &rarr;</button>
+          <a href="#" class="card-li" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="ti ti-brand-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card" tabindex="0" role="button" aria-label="View bio for CJ Burger"
+         data-bio="true"
+         data-photo="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/eb5e6b32-4678-49bb-aabd-4ab448ddc704/CJ%2BBurger%2BWhite%2BBkg.jpg"
+         data-name="CJ Burger"
+         data-title="Co-CIO &amp; Co-Founder"
+         data-office="Summit Investment Management"
+         data-biotext="CJ Burger, formerly with Coopers and Lybrand, is now President, CEO, Principal and Founder of Summit Investment Management, which invests in and manages distressed and underperforming commercial debt and other financial instruments. Summit Investment Management is also a Co-CIO and Co-Founder of Concord Summit.
+
+Since its inception, Summit has closed in excess of 400 transactions with institutions across the country and around the world, including under-performing and distressed debt, corporate restructurings, and complex opportunistic credits and joint ventures.
+
+Summit has invested more than $1.8 billion across a spectrum of industries and capital structures with transactions ranging in size from $1 million to $75 million. Summit Investment Management has been in business for 18 years.">
+      <div class="card-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/eb5e6b32-4678-49bb-aabd-4ab448ddc704/CJ%2BBurger%2BWhite%2BBkg.jpg" alt="CJ Burger" loading="lazy">
+        <span class="card-nudge"><i class="ti ti-user"></i> See Bio</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">CJ Burger</div>
+        <div class="card-title">Co-CIO &amp; Co-Founder</div>
+        <div class="card-footer">
+          <button class="card-bio-btn">See Bio &rarr;</button>
+          <a href="#" class="card-li" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="ti ti-brand-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card" tabindex="0" role="button" aria-label="View bio for Nate Sirang"
+         data-bio="true"
+         data-photo="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/7b85c19d-a501-4b6b-8c98-c90c474f837a/Nate%2BS.jpeg"
+         data-name="Nate Sirang"
+         data-title="Co-CIO &amp; Co-Founder"
+         data-office="Concord Wilshire Companies"
+         data-biotext="Nate Sirang is President of Concord Wilshire, a nationally recognized leader in residential, resort, and mixed-use real estate development and construction with over $10 billion in total value of developed and acquired assets. Concord Wilshire is also a Co-CIO and Co-Founder of Concord Summit.
+
+Since 1992, Concord Wilshire has been developing, constructing, and investing in distinguished real estate assets in major markets throughout the United States. An award-winning company, Concord Wilshire has received an array of accolades for many of its developments throughout the nation, in recognition of its commitment to development, marketing, architectural design, and interior design.
+
+Concord Wilshire has a successful and extensive track record that spans multiple investment cycles.">
+      <div class="card-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/7b85c19d-a501-4b6b-8c98-c90c474f837a/Nate%2BS.jpeg" alt="Nate Sirang" loading="lazy">
+        <span class="card-nudge"><i class="ti ti-user"></i> See Bio</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Nate Sirang</div>
+        <div class="card-title">Co-CIO &amp; Co-Founder</div>
+        <div class="card-footer">
+          <button class="card-bio-btn">See Bio &rarr;</button>
+          <a href="#" class="card-li" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="ti ti-brand-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /co-founders -->
+
+
+<!-- ── MIAMI ──────────────────────────────────────────── -->
+<div class="office-block" id="miami">
+  <div class="office-header">
+    <span class="office-name">Miami</span>
+    <span class="office-badge">Headquarters</span>
+    <span class="office-count">8 Professionals</span>
+  </div>
+  <div class="team-grid">
+
+    <div class="team-card" tabindex="0" role="button" aria-label="View bio for Kevin O'Grady"
+         data-bio="true"
+         data-photo="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/52086d4f-a2a7-47b2-bebe-a18ad84d4703/080421Kevin_OGrady024.jpg"
+         data-name="Kevin O&rsquo;Grady" data-title="Chairman" data-office="Miami &mdash; Headquarters"
+         data-biotext="With over 40 years of commercial real estate finance and related industry experience, Kevin O'Grady provides solutions for commercial real estate transactions of all types of asset classes. He has been responsible for the development of over 10 million square feet of commercial projects, 23 master planned housing communities, 6 million square feet of commercial leasing and over $25 billion in structured finance closings. Prior to founding Concord Summit, O'Grady was SVP and Managing Director with Walker and Dunlop.">
+      <div class="card-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/52086d4f-a2a7-47b2-bebe-a18ad84d4703/080421Kevin_OGrady024.jpg" alt="Kevin O'Grady" loading="lazy">
+        <span class="card-nudge"><i class="ti ti-user"></i> See Bio</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Kevin O&rsquo;Grady</div>
+        <div class="card-title">Chairman</div>
+        <div class="card-footer">
+          <button class="card-bio-btn">See Bio &rarr;</button>
+          <a href="#" class="card-li" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="ti ti-brand-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card" tabindex="0" role="button" aria-label="View bio for Justin Neelis"
+         data-bio="true"
+         data-photo="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1630614338650-B8CZVD7UPNIE79SKLWYP/081121Justin_Nellis+006.jpg"
+         data-name="Justin Neelis" data-title="Managing Director" data-office="Miami &mdash; Headquarters"
+         data-biotext="Justin Neelis brings over 17 years of expertise specializing in debt, structured finance and equity, closing over $2 billion in total transactions volume over his career. Neelis specializes in construction and bridge financing for residential and mixed-use projects across the US.
+
+Prior to CSC, Neelis was part of the following organizations: Walker &amp; Dunlop, Insite Group, Venetian Capital, and Comvest Investment Partners. Neelis is married to his wife, Wendy, and has three children. He attended Northwood University where he received a Bachelor's of Arts degree in Finance.">
+      <div class="card-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1630614338650-B8CZVD7UPNIE79SKLWYP/081121Justin_Nellis+006.jpg" alt="Justin Neelis" loading="lazy">
+        <span class="card-nudge"><i class="ti ti-user"></i> See Bio</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Justin Neelis</div>
+        <div class="card-title">Managing Director</div>
+        <div class="card-footer">
+          <button class="card-bio-btn">See Bio &rarr;</button>
+          <a href="#" class="card-li" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="ti ti-brand-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card" tabindex="0" role="button" aria-label="View bio for David Larson"
+         data-bio="true"
+         data-photo="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1630614323034-ZAGWBBBBHY9YM4MGYXL4/080421David_Larson006.jpg"
+         data-name="David Larson" data-title="Managing Director" data-office="Miami &mdash; Headquarters"
+         data-biotext="David Larson specializes in debt placement, investment sales, structured finance and buy-side advisory. He is adept in numerous real estate strategies, including real estate strategic planning, land use advisory, and debt capital markets execution. He has been involved in over $800 million in debt arrangement, investment sales, and structured finance transactions.
+
+Prior to joining Concord Summit, Larson was a Managing Director with Newmark and was the partner of Florida operations with Quadrant Properties, a private real estate development and investment firm headquartered in St. Louis, Missouri.
+
+Larson graduated from The University of Denver with a Bachelor of Science in Business Administration in Finance. He lives in Miami with his wife Veronica and sons Wyatt and Jack.">
+      <div class="card-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1630614323034-ZAGWBBBBHY9YM4MGYXL4/080421David_Larson006.jpg" alt="David Larson" loading="lazy">
+        <span class="card-nudge"><i class="ti ti-user"></i> See Bio</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">David Larson</div>
+        <div class="card-title">Managing Director</div>
+        <div class="card-footer">
+          <button class="card-bio-btn">See Bio &rarr;</button>
+          <a href="#" class="card-li" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="ti ti-brand-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1630614331212-V7XCN59H0FJR6D7WM8BM/080421Keegan_Burger030.jpg" alt="Robert Horton" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Robert Horton</div><div class="card-title">Managing Director</div></div>
+    </div>
+
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1684950723988-61EBEPQXHX6KNW25HCFV/Zachary%2BGlick_Headshot.jpg" alt="Jeffery DiBartolo" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Jeffery DiBartolo</div><div class="card-title">Finance Director</div></div>
+    </div>
+
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1630614314160-A1PLIPCUOW226PHOECTX/080421Daniel_Rojo006.jpg" alt="Keegan Burger" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Keegan Burger</div><div class="card-title">Director</div></div>
+    </div>
+
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1677014925223-IDT48ZYEVQDW0P363HM3/Daniel+Eidson_Headshot.jpg" alt="Cherie May Adams" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Cherie May Adams</div><div class="card-title">SVP, Talent Acquisition</div></div>
+    </div>
+
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1684951155192-XAXB33SIPVJ33MWJBEXG/John+Choi.jpg" alt="Connor Martz" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Connor Martz</div><div class="card-title">Senior Analyst</div></div>
+    </div>
+
+  </div>
+</div><!-- /miami -->
+
+
+<!-- ── NEW YORK ──────────────────────────────────────── -->
+<div class="office-block" id="new-york">
+  <div class="office-header">
+    <span class="office-name">New York</span>
+    <span class="office-count">2 Professionals</span>
+  </div>
+  <div class="team-grid small">
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1661535463131-BHPFVAXCK9NU3YQ1DLLC/Tyler-Headshot.jpg" alt="Aryeh Friedman" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Aryeh Friedman</div><div class="card-title">Managing Director</div></div>
+    </div>
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1684951157846-E2IIUKE5AXYUT9PCPWDK/Ian+Maxwell.jpg" alt="Josh Roth" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Josh Roth</div><div class="card-title">VP, Lending Division</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── DALLAS ────────────────────────────────────────── -->
+<div class="office-block" id="dallas">
+  <div class="office-header">
+    <span class="office-name">Dallas / Fort Worth</span>
+  </div>
+  <div class="team-grid small">
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1632775306616-AQJYX2VTDICD6JGHOBNO/Dan-Headshot.jpg" alt="Dan Bresnahan" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Dan Bresnahan</div><div class="card-title">Director</div></div>
+    </div>
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1684950723988-61EBEPQXHX6KNW25HCFV/Zachary%2BGlick_Headshot.jpg" alt="Zachary Glick" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Zachary Glick</div><div class="card-title">Associate</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── DENVER ────────────────────────────────────────── -->
+<div class="office-block" id="denver">
+  <div class="office-header">
+    <span class="office-name">Denver</span>
+    <span class="office-count">2 Professionals</span>
+  </div>
+  <div class="team-grid small">
+    <div class="team-card" tabindex="0" role="button" aria-label="View bio for Daniel Eidson"
+         data-bio="true"
+         data-photo="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1677014925223-IDT48ZYEVQDW0P363HM3/Daniel+Eidson_Headshot.jpg"
+         data-name="Daniel Eidson" data-title="Managing Director" data-office="Denver"
+         data-biotext="Daniel Eidson specializes in arranging debt and equity financing for institutional and private multifamily and commercial real estate owners and developers nationally, based out of the firm's Denver, Colorado office.
+
+With over a decade of principal investing and advisory experience, he has successfully closed over $4 billion in transactions, spanning thousands of units and millions of square feet at various stages of development across the United States.
+
+Since joining Concord Summit in October 2022, Eidson has expanded the firm's presence by leveraging his background in complex capital structuring and client advisory.">
+      <div class="card-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1677014925223-IDT48ZYEVQDW0P363HM3/Daniel+Eidson_Headshot.jpg" alt="Daniel Eidson" loading="lazy">
+        <span class="card-nudge"><i class="ti ti-user"></i> See Bio</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Daniel Eidson</div>
+        <div class="card-title">Managing Director</div>
+        <div class="card-footer">
+          <button class="card-bio-btn">See Bio &rarr;</button>
+          <a href="#" class="card-li" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="ti ti-brand-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1632775306515-GETIHZQ70P289RL4LZUU/Mason-Headshot.jpg" alt="Benjamin Applebaum" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Benjamin Applebaum</div><div class="card-title">Analyst</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── LOS ANGELES ───────────────────────────────────── -->
+<div class="office-block" id="los-angeles">
+  <div class="office-header">
+    <span class="office-name">Los Angeles</span>
+    <span class="office-count">4 Professionals</span>
+  </div>
+  <div class="team-grid">
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1661535463131-BHPFVAXCK9NU3YQ1DLLC/Tyler-Headshot.jpg" alt="Tyler Beauregard" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Tyler Beauregard</div><div class="card-title">Managing Director</div></div>
+    </div>
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/a082009d-829c-4f3a-a98a-ac8387979a9f/Headshot.jpeg" alt="Clark Israeli" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Clark Israeli</div><div class="card-title">Analyst</div></div>
+    </div>
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1684951155192-XAXB33SIPVJ33MWJBEXG/John+Choi.jpg" alt="John Choi" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">John Choi</div><div class="card-title">Director</div></div>
+    </div>
+    <div class="team-card no-bio">
+      <div class="card-photo"><img src="https://images.squarespace-cdn.com/content/v1/5dc6020a06a5ea221de86cb0/1684951157846-E2IIUKE5AXYUT9PCPWDK/Ian+Maxwell.jpg" alt="Ian Maxwell" loading="lazy"></div>
+      <div class="card-body"><div class="card-name">Ian Maxwell</div><div class="card-title">Director</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /section-inner -->
+</div><!-- /team-page -->
+
+<!-- ════════════════════════════════════════════════════════
+  BIO MODAL
+════════════════════════════════════════════════════════ -->
+<div class="bio-backdrop" id="bio-backdrop" role="dialog" aria-modal="true" aria-labelledby="bio-name-el">
+  <div class="bio-panel" id="bio-panel">
+    <div class="bio-handle"></div>
+    <div class="bio-close-row">
+      <button class="bio-close-btn" id="bio-close-btn" aria-label="Close bio">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+    <div class="bio-content">
+      <div class="bio-header">
+        <img class="bio-photo" id="bio-photo-el" src="" alt="">
+        <div class="bio-meta">
+          <div class="bio-name" id="bio-name-el"></div>
+          <div class="bio-title" id="bio-title-el"></div>
+          <div class="bio-office" id="bio-office-el"></div>
+          <div class="bio-gold-rule"></div>
+          <a href="#" class="bio-li-link" id="bio-li-el" target="_blank" rel="noopener">
+            <i class="ti ti-brand-linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="bio-text" id="bio-text-el"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT STRIP -->
+<section class="contact-strip">
+  <div class="section-inner">
+    <div class="contact-strip-inner">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-text">Contact</span></div>
+        <h2 class="section-title" style="font-size:clamp(26px,4vw,36px)">Let&rsquo;s Talk.</h2>
+        <p class="section-subtitle" style="margin-top:12px">Financing inquiries, capital introductions, career conversations.</p>
+        <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="contact.html" class="btn-primary">Get in Touch &rarr;</a>
+          <a href="mailto:info@concordsummit.com" class="btn-secondary">info@concordsummit.com</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="contact-office"><h4>Miami &mdash; HQ</h4><p>+1 305 417 6557</p><a href="mailto:info@concordsummit.com">info@concordsummit.com</a></div>
+        <div class="contact-office"><h4>New York</h4><p>New York, NY</p></div>
+        <div class="contact-office"><h4>Dallas / Fort Worth</h4><p>Dallas, TX</p></div>
+        <div class="contact-office"><h4>Denver</h4><p>Denver, CO</p></div>
+        <div class="contact-office"><h4>Los Angeles</h4><p>Los Angeles, CA</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><a href="index.html"><img src="images/logo.png" alt="Concord Summit Capital"></a></div>
+        <p>One of the leading intermediaries between sponsors and providers of capital for commercial real estate debt and equity financing.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col"><h5>Platform</h5>
+          <a href="services.html#debt">Debt Financing</a>
+          <a href="services.html#mezzanine">Mezzanine &amp; Preferred</a>
+          <a href="services.html#equity">Equity Financing</a>
+          <a href="services.html#engagement">Engagement Services</a>
+        </div>
+        <div class="footer-col"><h5>Company</h5>
+          <a href="about.html">About</a><a href="team.html">Team</a>
+          <a href="transactions.html">Transactions</a><a href="careers.html">Careers</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col"><h5>Offices</h5>
+          <a href="#miami">Miami</a><a href="#new-york">New York</a>
+          <a href="#dallas">Dallas / Fort Worth</a>
+          <a href="#denver">Denver</a><a href="#los-angeles">Los Angeles</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Concord Summit Capital. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+/* ── BIO MODAL ────────────────────────────────────────── */
+(function () {
+  const backdrop = document.getElementById('bio-backdrop');
+  const panel    = document.getElementById('bio-panel');
+  const closeBtn = document.getElementById('bio-close-btn');
+  const photoEl  = document.getElementById('bio-photo-el');
+  const nameEl   = document.getElementById('bio-name-el');
+  const titleEl  = document.getElementById('bio-title-el');
+  const officeEl = document.getElementById('bio-office-el');
+  const textEl   = document.getElementById('bio-text-el');
+  const liEl     = document.getElementById('bio-li-el');
+  let lastFocus  = null;
+
+  function open(card) {
+    lastFocus = document.activeElement;
+    nameEl.innerHTML   = card.dataset.name   || '';
+    titleEl.innerHTML  = card.dataset.title  || '';
+    officeEl.innerHTML = card.dataset.office || '';
+    photoEl.src        = card.dataset.photo  || '';
+    photoEl.alt        = card.dataset.name   || '';
+    liEl.href = '#';
+
+    const raw = card.dataset.biotext || '';
+    textEl.innerHTML = raw.split(/\n\n+/)
+      .map(p => `<p>${p.trim().replace(/\n/g, '<br>')}</p>`).join('');
+
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    panel.scrollTop = 0;
+    setTimeout(() => closeBtn.focus(), 300);
+  }
+
+  function close() {
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('.team-card[data-bio]').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.closest('.card-li')) return;
+      open(card);
+    });
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); }
+    });
+  });
+
+  closeBtn.addEventListener('click', close);
+  backdrop.addEventListener('click', e => { if (e.target === backdrop) close(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) close();
+  });
+
+  // Swipe down to close
+  let ty0 = 0;
+  panel.addEventListener('touchstart', e => { ty0 = e.touches[0].clientY; }, { passive: true });
+  panel.addEventListener('touchend', e => {
+    if (e.changedTouches[0].clientY - ty0 > 80 && panel.scrollTop === 0) close();
+  }, { passive: true });
+})();
+
+/* ── SECTION NAV ACTIVE ──────────────────────────────── */
+(function () {
+  const nav   = document.getElementById('section-nav');
+  const links = nav.querySelectorAll('a');
+  const blocks = document.querySelectorAll('.office-block');
+  const offset = () => (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68) + nav.offsetHeight + 16;
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const id = '#' + e.target.id;
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+      const active = nav.querySelector('a.active');
+      if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    });
+  }, { rootMargin: `-${offset()}px 0px -50% 0px`, threshold: 0 });
+
+  blocks.forEach(b => obs.observe(b));
+
+  /* Hero slideshow */
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots   = document.querySelectorAll('.h-dot');
+  if (!slides.length) return;
+  let cur = 0, timer;
+
+  function go(n) {
+    slides[cur].classList.remove('active');
+    dots[cur]?.classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur]?.classList.add('active');
+  }
+  function startTimer() { timer = setInterval(() => go(cur + 1), 5000); }
+  function resetTimer() { clearInterval(timer); startTimer(); }
+
+  document.querySelector('.hero-next')?.addEventListener('click', () => { go(cur + 1); resetTimer(); });
+  document.querySelector('.hero-prev')?.addEventListener('click', () => { go(cur - 1); resetTimer(); });
+  dots.forEach(d => d.addEventListener('click', () => { go(+d.dataset.index); resetTimer(); }));
+  startTimer();
+})();
+</script>
+</body>
+</html>

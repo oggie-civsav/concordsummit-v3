@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Contact — Concord Summit Capital</title>
+<meta name="description" content="Concord Summit Capital — National commercial real estate capital markets advisory.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.contact-body{padding:88px 0;background:var(--ink)}
+.con-grid{display:flex;flex-direction:column;gap:56px}
+.con-grid h3{font-family:var(--font-head);font-size:clamp(20px,3vw,26px);font-weight:700;color:var(--ivory);margin-bottom:26px;letter-spacing:-.02em}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:8px}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--slate);border:1px solid var(--border);border-radius:var(--r-sm);padding:13px 16px;font-family:var(--font-body);font-size:16px;color:var(--ivory);outline:none;transition:border-color var(--t),box-shadow var(--t);-webkit-appearance:none}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--mist);opacity:.45}
+.fg select option{background:var(--slate);color:var(--ivory)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--royal);box-shadow:0 0 0 3px rgba(27,79,214,.18)}
+.fg textarea{resize:vertical;min-height:130px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cd{display:flex;gap:14px;margin-bottom:24px;align-items:flex-start}
+.cd-icon{font-size:18px;color:var(--gold);margin-top:2px;flex-shrink:0}
+.cd h4{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:4px}
+.cd p,.cd a{font-size:16px;color:var(--ivory);text-decoration:none;display:block;line-height:1.6;transition:color var(--t)}
+.cd a:hover{color:var(--powder)}
+@media(min-width:1024px){.con-grid{flex-direction:row}.con-form{flex:3}.con-info{flex:2}.contact-body{padding:112px 0}}
+</style>
+</head>
+<body><nav id="main-nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Concord Summit Capital"></a>
+  <div class="nav-links"><a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="services.html">Services</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html" class="active">Contact</a></div>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="about.html" onclick="closeMenu()">About</a>
+  <a href="team.html" onclick="closeMenu()">Team</a>
+  <a href="services.html" onclick="closeMenu()">Services</a>
+  <a href="transactions.html" onclick="closeMenu()">Transactions</a>
+  <a href="careers.html" onclick="closeMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a href="contact.html" class="mobile-cta" onclick="closeMenu()">Get in Touch &rarr;</a>
+</div>
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=1920&q=85')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content section-inner">
+    <div class="eyebrow"><span class="eyebrow-text">Get In Touch</span></div>
+    <h1 class="section-title" style="font-family:var(--font-head);font-size:clamp(36px,7vw,68px);font-weight:800;letter-spacing:-.03em">Contact Us</h1>
+    <div class="page-hero-rule"></div>
+    
+  </div>
+</section>
+<section class="contact-body">
+  <div class="section-inner">
+    <div class="con-grid">
+      <div class="con-form">
+        <h3>Send Us a Message</h3>
+        <form action="mailto:info@concordsummit.com" method="post" enctype="text/plain">
+          <div class="fr">
+            <div class="fg"><label>First Name</label><input type="text" name="fn" placeholder="First Name" required></div>
+            <div class="fg"><label>Last Name</label><input type="text" name="ln" placeholder="Last Name" required></div>
+          </div>
+          <div class="fg"><label>Email</label><input type="email" name="em" placeholder="email@company.com" required></div>
+          <div class="fg"><label>Phone</label><input type="tel" name="ph" placeholder="+1 (000) 000-0000"></div>
+          <div class="fg"><label>Inquiry Type</label>
+            <select name="iq">
+              <option value="">Select...</option>
+              <option>Debt Financing</option>
+              <option>Mezzanine / Preferred Equity</option>
+              <option>Equity Financing</option>
+              <option>Careers / Employment</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="fg"><label>Message</label><textarea name="msg" placeholder="Tell us about your project or inquiry..."></textarea></div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Send Message &rarr;</button>
+        </form>
+      </div>
+      <div class="con-info">
+        <h3>Our Offices</h3>
+        <div class="cd"><i class="cd-icon ti ti-map-pin"></i><div><h4>Miami &mdash; HQ</h4><p>Miami, FL</p></div></div>
+        <div class="cd"><i class="cd-icon ti ti-phone"></i><div><h4>Phone</h4><a href="tel:+13054176557">+1 305 417 6557</a></div></div>
+        <div class="cd"><i class="cd-icon ti ti-mail"></i><div><h4>Email</h4><a href="mailto:info@concordsummit.com">info@concordsummit.com</a></div></div>
+        <div style="margin-top:28px;padding-top:28px;border-top:1px solid var(--border)">
+          <p style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-bottom:14px">Additional Offices</p>
+          <p style="font-size:16px;color:var(--mist);line-height:2.4">New York, NY<br>Dallas / Fort Worth, TX<br>Denver, CO<br>Los Angeles, CA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><a href="index.html"><img src="images/logo.png" alt="Concord Summit Capital"></a></div>
+        <p>One of the leading intermediaries between sponsors and providers of capital for commercial real estate debt and equity financing.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col"><h5>Platform</h5>
+          <a href="services.html#debt">Debt Financing</a>
+          <a href="services.html#mezzanine">Mezzanine &amp; Preferred</a>
+          <a href="services.html#equity">Equity Financing</a>
+          <a href="services.html#engagement">Engagement Services</a>
+        </div>
+        <div class="footer-col"><h5>Company</h5>
+          <a href="about.html">About</a><a href="team.html">Team</a>
+          <a href="transactions.html">Transactions</a><a href="careers.html">Careers</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col"><h5>Offices</h5>
+          <a href="team.html#miami">Miami</a><a href="team.html#new-york">New York</a>
+          <a href="team.html#dallas">Dallas / Fort Worth</a>
+          <a href="team.html#denver">Denver</a><a href="team.html#los-angeles">Los Angeles</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Concord Summit Capital. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
